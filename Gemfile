@@ -48,9 +48,27 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+# 認証機能の追加
+gem "devise"
+
+# OpenAI APIとの通信
+gem "httparty"
+
+# 環境変数の管理
+gem "dotenv-rails", groups: [:development, :test]
+
+# フロントエンドとのCORS設定
+gem "rack-cors"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+
+  # RSpecによるテスト
+  gem "rspec-rails", "~> 5.0"
+  
+  # デバッグ用
+  gem "pry-rails"
 end
 
 group :development do
@@ -68,5 +86,9 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+end
 
+group :production do
+  # Herokuデプロイ用
+  gem "rails_12factor"
 end
